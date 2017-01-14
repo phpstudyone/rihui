@@ -1,5 +1,4 @@
-                                        Good morning!
-                                        =============
+#Good morning!
 ##必记单词
     good                    adj. 好的
     hi                      interj. (用于打招呼)嗨；喂
