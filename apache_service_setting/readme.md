@@ -30,7 +30,7 @@ openssl s_client -connect local.tbl.com:443
 ###三：Use Digest Authentication
 **使用digest Authentication**
 ***
-###Disable insecure TLS/SSL protocol support AND Enable only TLS 1.2
+###四：Disable insecure TLS/SSL protocol support AND Enable only TLS 1.2
 **禁用不安全的TLS/SSL链接，只是用TLS version 1.2**
 
 ####  1.搜索SSLProtocol,查看配置文件
@@ -46,8 +46,8 @@ grep -i -r "SSLProtocol" /etc/httpd
 使用vim编辑器，进入到 `vim /etc/apache2/mods-available/ssl.conf` 编辑以下部分
 ![vim1](https://github.com/phpstudyOne/rihui/blob/apache_service_setting/apache_service_setting/images/vim1.png)
 
-其中 all -SSLv 表示支持所有所有类型的ssl，但是不支持SSLv3。
-这里我们需要更改为 **`SSLProtocol  TLSv1.2`**
+    其中 all -SSLv 表示支持所有所有类型的ssl，但是不支持SSLv3。
+    这里我们需要更改为 SSLProtocol  TLSv1.2
 
 ####2. 搜索SSLEngine,查看配置文件
 ```sh
