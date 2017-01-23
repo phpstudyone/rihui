@@ -27,7 +27,7 @@ grep -i -r "SSLProtocol" /etc/httpd
    如图示：![SSLProtocol](https://github.com/phpstudyOne/rihui/blob/apache_service_setting/apache_service_setting/images/sslProtocol.png)
    
 使用vim编辑器，进入到 `vim /etc/apache2/mods-available/ssl.conf` 编辑以下部分
-![vim1](https://lh3.google.com/u/0/d/0B-rwyQbz4OanSVFqTFlkeTcxbmM=w1920-h912-iv1)
+![vim1](https://github.com/phpstudyOne/rihui/blob/apache_service_setting/apache_service_setting/images/vim1.png)
 
 其中 all -SSLv 表示支持所有所有类型的ssl，但是不支持SSLv3。
 这里我们需要更改为 **`SSLProtocol  TLSv1.2`**
@@ -40,10 +40,10 @@ grep -i -r "SSLEngine" /etc/apache2
 ```sh
 grep -i -r "SSLEngine" /etc/httpd
 ```
-如图示：![SSLEngine](https://lh3.google.com/u/0/d/0B-rwyQbz4OanRDVhVnExM1dsSjg=w1920-h491-iv1)
+如图示：![SSLEngine](https://raw.githubusercontent.com/phpstudyOne/rihui/apache_service_setting/apache_service_setting/images/sslengine.png)
 
 使用vim编辑器，进入到 `vim /etc/apache2/sites-enabled/qa-www-server-ssl.conf` 编辑以下部分
-![vim2](https://lh3.google.com/u/0/d/0B-rwyQbz4OanSk1vN0cwanpuSkE=w1920-h491-iv1)
+![vim2](https://raw.githubusercontent.com/phpstudyOne/rihui/apache_service_setting/apache_service_setting/images/vim2.png)
 
 ####3. 重启apache服务器
 ``` sh
