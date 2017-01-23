@@ -24,7 +24,7 @@ grep -i -r "SSLProtocol" /etc/apache2
 ```sh
 grep -i -r "SSLProtocol" /etc/httpd
 ```
-   如图示：![SSLProtocol](https://lh3.google.com/u/0/d/0B-rwyQbz4OandVNTRHlQN1VvREk=w1920-h912-iv1)
+   如图示：![SSLProtocol](https://github.com/phpstudyOne/rihui/blob/apache_service_setting/apache_service_setting/images/sslProtocol.png)
    
 使用vim编辑器，进入到 `vim /etc/apache2/mods-available/ssl.conf` 编辑以下部分
 ![vim1](https://lh3.google.com/u/0/d/0B-rwyQbz4OanSVFqTFlkeTcxbmM=w1920-h912-iv1)
