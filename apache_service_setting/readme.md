@@ -4,13 +4,30 @@ APACHE SERVICE SETTING
 
 **apache关于安全和优化的一些设置**
 ***
-###Disable HTTP TRACE Method for Apache
+###一：Disable HTTP TRACE Method for Apache
 **禁用apache的http的trace方法**
+
+    在apache的配置文件中查找 TraceEnable 配置，如果有，改为 OFF ，不存在的话，在文件末尾添加
+    TraceEnable off
+####1. TraceEnable off 前的测试
+执行
+```sh
+openssl s_client -connect local.tbl.com:443
+```
+输入以下语句两次按两次回车键
+
+    TRACE / HTTP/1.0
+    X-Test:abcde
+结果返回 200 ，此时trace方法没有禁用。如图：
+![trace_on](https://raw.githubusercontent.com/phpstudyOne/rihui/apache_service_setting/apache_service_setting/images/trace_on.png)
+####2. TraceEnable off 后的测试
+步骤同上，结果返回405，此时trace方法已被禁用。如图：
+![trace_off](https://raw.githubusercontent.com/phpstudyOne/rihui/apache_service_setting/apache_service_setting/images/trace_off.png)
 ***
-###Disable web directory browsing for all directories and subdirectories
+###二：Disable web directory browsing for all directories and subdirectories
 **禁止浏览项目目录**
 ***
-###Use Digest Authentication
+###三：Use Digest Authentication
 **使用digest Authentication**
 ***
 ###Disable insecure TLS/SSL protocol support AND Enable only TLS 1.2
