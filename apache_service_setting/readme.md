@@ -26,6 +26,19 @@ openssl s_client -connect local.tbl.com:443
 ***
 ###二：Disable web directory browsing for all directories and subdirectories
 **禁止浏览项目目录**
+
+    修改 httpd-vhosts.conf 中 VirtualHost 的 Options 配置
+    把   Options Indexes FollowSymLinks
+    改为 Options FollowSymLinks
+本地测试案例：  
+有indexes 配置，在找不到 index 相关文件，输出目录
+![noindexes](https://raw.githubusercontent.com/phpstudyOne/rihui/apache_service_setting/apache_service_setting/images/noindexes.png)
+
+无 indexes 配置，在找不到 index 相关文件，返回 403
+![indexes](https://raw.githubusercontent.com/phpstudyOne/rihui/apache_service_setting/apache_service_setting/images/indexes.png)
+
+只有文件存在，才正常返回
+![isexit](https://raw.githubusercontent.com/phpstudyOne/rihui/apache_service_setting/apache_service_setting/images/isexit.png)
 ***
 ###三：Use Digest Authentication
 **使用digest Authentication**
