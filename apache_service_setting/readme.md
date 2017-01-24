@@ -46,6 +46,7 @@ openssl s_client -connect local.tbl.com:443
 ####1 . 配置Apache Basic 认证
 未配置之前访问 https://local.tbl.com/log/test.text  内容直接显示:
 ![digestcontent](https://raw.githubusercontent.com/phpstudyOne/rihui/apache_service_setting/apache_service_setting/images/digestcontent.png)
+
 1.生成密码文件
 ``` sh
 apple@appledeMac-mini:/Applications/XAMPP/htdocs/tbl/app/webroot/log develop$ htpasswd -c jason.txt jason
@@ -54,6 +55,7 @@ Re-type new password:
 Adding password for user jason
 ```
 ![createbasicpass](https://raw.githubusercontent.com/phpstudyOne/rihui/apache_service_setting/apache_service_setting/images/createbasicpass.png)
+
 会在当前目录生成一个 jason.txt 的文件 ，存储了 jason用户的密码
 -c 新建密码文件，如果存在，则覆盖。
 
@@ -68,9 +70,11 @@ require valid-user
 path：`/Applications/XAMPP/htdocs/tbl/app/webroot/log/.htaccess`
 
 现在再次请求，会让输入账号密码
+
 ![basicpass](https://raw.githubusercontent.com/phpstudyOne/rihui/apache_service_setting/apache_service_setting/images/basicpass.png)
 
 如果点击取消，返回401
+
 ![cancel](https://raw.githubusercontent.com/phpstudyOne/rihui/apache_service_setting/apache_service_setting/images/cancel.png)
 
 只有输入正确的账号密码，才会显示内容。
@@ -83,7 +87,8 @@ Adding password for jason in realm Digest Encrypt.
 New password:
 Re-type new password:
 ```
-![createdigestpass](https://raw.githubusercontent.com/phpstudyOne/rihui/apache_service_setting/apache_service_setting/images/createdigetpass.png)
+![createdigestpass](https://raw.githubusercontent.com/phpstudyOne/rihui/apache_service_setting/apache_service_setting/images/createdigestpass.png)
+
 此处**realm**为 **Digest Encrypt**
 
 2.在需要做控制的目录下新建 **.htaccess** 文件 写入
@@ -100,6 +105,7 @@ require valid-user
 path：`/Applications/XAMPP/htdocs/tbl/app/webroot/log/.htaccess`
 
 完成后请求该地址要求输入账号密码：
+
 ![digestpass](https://raw.githubusercontent.com/phpstudyOne/rihui/apache_service_setting/apache_service_setting/images/digestpass.png)
 
 点击取消／输入正确的账号密码效果同 Basic 认证
