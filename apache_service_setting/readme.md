@@ -32,10 +32,10 @@ openssl s_client -connect local.tbl.com:443
     改为 Options FollowSymLinks
 本地测试案例：  
 有indexes 配置，在找不到 index 相关文件，输出目录
-![noindexes](https://raw.githubusercontent.com/phpstudyOne/rihui/apache_service_setting/apache_service_setting/images/noindexes.png)
+![noindexes](https://raw.githubusercontent.com/phpstudyOne/rihui/apache_service_setting/apache_service_setting/images/indexes.png)
 
 无 indexes 配置，在找不到 index 相关文件，返回 403
-![indexes](https://raw.githubusercontent.com/phpstudyOne/rihui/apache_service_setting/apache_service_setting/images/indexes.png)
+![indexes](https://raw.githubusercontent.com/phpstudyOne/rihui/apache_service_setting/apache_service_setting/images/noindexes.png)
 
 只有文件存在，才正常返回
 ![isexit](https://raw.githubusercontent.com/phpstudyOne/rihui/apache_service_setting/apache_service_setting/images/isexit.png)
@@ -57,6 +57,7 @@ Adding password for user jason
 ![createbasicpass](https://raw.githubusercontent.com/phpstudyOne/rihui/apache_service_setting/apache_service_setting/images/createbasicpass.png)
 
 会在当前目录生成一个 jason.txt 的文件 ，存储了 jason用户的密码
+
 -c 新建密码文件，如果存在，则覆盖。
 
 2.在需要做控制的目录下新建 **.htaccess** 文件 写入
