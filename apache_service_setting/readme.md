@@ -23,6 +23,23 @@ openssl s_client -connect local.tbl.com:443
 ####2. TraceEnable off 后的测试
 步骤同上，结果返回405，此时trace方法已被禁用。如图：
 ![trace_off](https://raw.githubusercontent.com/phpstudyOne/rihui/apache_service_setting/apache_service_setting/images/trace_off.png)
+
+或者：
+```sh
+telnet qa-www.twobrightlights.com 443
+TRACE / HTTP/1.0
+X-Test:abcde
+```
+
+或者：
+``` sh
+curl -i -X TRACE https://qa.2brightlights.info/
+curl -i -X TRACE https://qa-www.twobrightlights.com/
+curl -i -X TRACE https://twobrightlights.com/
+```
+
+参考资料：[Disabling the TRACE method in Apache2](http://www.alphadevx.com/a/383-Disabling-the-TRACE-method-in-Apache2)
+
 ***
 ###二：Disable web directory browsing for all directories and subdirectories
 **禁止浏览项目目录**
