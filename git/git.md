@@ -1,0 +1,45 @@
+# GIT操作
+### 查看本地所有分支
+```sh
+git branch
+```
+### 切换到对应分支
+```sh
+git checkout bug/#136147581_fix_the_idle_time_to_6_months
+```
+### 进行rebase操作
+```sh
+git rebase origin/develop
+```
+### 进行push操作
+```sh
+git push -f
+```
+### 忽略文件权限 ###
+``` sh
+git config core.filemode false
+```
+### 使全局忽略文件生效 ###
+``` sh
+git config --global core.excludesfile ~/.gitignoreglobal (注意路径)
+```
+### 查看某个人的提交历史 ###
+``` sh
+git log --author=Jason
+```
+
+
+git cherry-pick...      //将其他人提交的分支代码检出到自己本地分支中
+git rebase -i HEAD~2   ＃git squash last two commits into one  //合并最近的两次提交
+git commit --amend      //追加提交
+git reset --hard 01d8df0e94b8e5ed2fff1388d8bd41c21cc1d4e0   //重置到该次提交
+git reset --hard HEAD~3
+
+git log -20 --pretty=oneline
+
+git checkout HEAD~3 --Gemfile.lock
+
+git branch -m changes_base_on_feedback feature/117409005_changes_base_on_feedback
+git push origin :category_mobile
+git push origin feature/114939315_category_article_lazy_load_mobile
+git branch -u origin/feature/114939315_category_article_lazy_load_mobile
