@@ -13,8 +13,10 @@ $file = $controllerName . "Controller.php" ;
 if( !file_exists($file) ){
     echo $file . "控制器文件不存在\r\n";die;
 }
-
+include_once 'BaseController.php';
 include_once $file;
+
+$a = new TestController();
 
 
 
