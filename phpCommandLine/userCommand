@@ -1,0 +1,20 @@
+#!/usr/bin/env php
+<?php
+
+if(!isset($argv[1]) || !isset($argv[2])){
+    echo "格式不正确,请按以下格式输入命令\r\n";
+    echo "./userCommand controllerName actionName param1 param2\r\n";
+    die;
+}
+
+$controllerName = ucfirst(strtolower($argv[1]));
+$file = $controllerName . "Controller.php" ;
+
+if( !file_exists($file) ){
+    echo $file . "控制器文件不存在\r\n";die;
+}
+
+include_once $file;
+
+
+
