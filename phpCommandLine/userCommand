@@ -1,22 +1,18 @@
 #!/usr/bin/env php
 <?php
-
 if(!isset($argv[1]) || !isset($argv[2])){
     echo "格式不正确,请按以下格式输入命令\r\n";
     echo "./userCommand controllerName actionName param1 param2\r\n";
     die;
 }
-
+/**
+ * 定义项目根目录
+ */
+define('BASE_PATH',str_replace('\\','/',realpath(dirname(__FILE__).'/'))."/");
+include_once "config/main.php";
 $controllerName = ucfirst(strtolower($argv[1]));
 $file = $controllerName . "Controller.php" ;
-
-if( !file_exists($file) ){
-    echo $file . "控制器文件不存在\r\n";die;
+$filePath = USER_CONTROLLER_PATH . $file;
+if( !file_exists($filePath) ){
+    echo $filePath . "控制器文件不存在\r\n";die;
 }
-include_once 'BaseController.php';
-include_once $file;
-
-$a = new TestController();
-
-
-

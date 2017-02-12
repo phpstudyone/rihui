@@ -1,4 +1,5 @@
 <?php
+namespace base;
 /**
  * 父类控制器
  * Created by PhpStorm.
