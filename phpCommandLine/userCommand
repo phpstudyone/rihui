@@ -9,10 +9,21 @@ if(!isset($argv[1]) || !isset($argv[2])){
  * 定义项目根目录
  */
 define('BASE_PATH',str_replace('\\','/',realpath(dirname(__FILE__).'/'))."/");
-include_once "config/main.php";
-$controllerName = ucfirst(strtolower($argv[1]));
-$file = $controllerName . "Controller.php" ;
+
+/**
+ * 引入配置文件
+ */
+require_once "config/main.php";
+require_once "base/BaseController.php";
+
+$controller = ucfirst(strtolower($argv[1]));
+$controllerName = $controller . "Controller";
+$file = $controllerName . ".php" ;
 $filePath = USER_CONTROLLER_PATH . $file;
+
 if( !file_exists($filePath) ){
     echo $filePath . "控制器文件不存在\r\n";die;
 }
+$namespace = require_once $filePath;
+$object = "\\" . $namespace . "\\" . $controllerName;
+$object = new $object;

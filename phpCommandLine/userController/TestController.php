@@ -12,3 +12,4 @@ class TestController extends BaseController  {
         echo 1111;
     }
 }
+return __NAMESPACE__;
