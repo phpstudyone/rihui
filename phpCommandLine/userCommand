@@ -1,0 +1,54 @@
+#!/usr/bin/env php
+<?php
+if(!isset($argv[1])){
+    echo "格式不正确,请按以下格式输入命令\r\n";
+    echo "./userCommand controllerName actionName param1 param2\r\n";
+    die;
+}
+/**
+ * 定义项目根目录
+ */
+define('BASE_PATH',str_replace('\\','/',realpath(dirname(__FILE__).'/'))."/");
+
+/**
+ * 引入配置文件
+ */
+require_once "config/main.php";
+require_once "base/BaseController.php";
+
+$controller = ucfirst(strtolower($argv[1]));
+$controllerName = $controller . "Controller";
+$file = $controllerName . ".php" ;
+$filePath = USER_CONTROLLER_PATH . $file;
+
+if( !file_exists($filePath) ){
+    echo $filePath . "控制器文件不存在\r\n";die;
+}
+$namespace = require_once $filePath;
+$object = "\\" . $namespace . "\\" . $controllerName;
+$object = new $object;
+if(!isset($argv[2])){
+    $object->IndexAction();
+}else{
+    $action = ucfirst(strtolower($argv[2])) . "Action";
+    if(!method_exists($object,$action)){
+        echo $argv[2] . "方法不存在\r\n";die;
+    }else{
+        $count = count($argv);
+        $str = '$object->' . $action;
+        if ($count == 3){
+            $str .= '();';
+        }else{
+            $str .= "(";
+            for($i = 4 ; $i <= $count ; $i++){
+                $str .= "'" . $argv[$i-1] . "'" ;
+                if($i != $count){
+                    $str .= ",";
+                }
+            }
+            $str .= ");";
+        }
+        eval($str);
+    }
+}
+
