@@ -13,7 +13,6 @@ phpcli 模式执行php文件
 * param1 ...  为方法中需要传递的参数，非必须，视具体情况而定。
 
 ##二：demo解释
-请使用以下格式命令来运行
 ```sh
 ./userCommand test test hello world
 ```
