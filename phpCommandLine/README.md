@@ -52,3 +52,4 @@ class HelloController extends BaseController  {
 }
 return __NAMESPACE__;
 ```
+你也可以自定义你的模板文件，模板文件为config/createTemplet

@@ -30,7 +30,7 @@ $object = new $object;
 if(!isset($argv[2])){
     $object->IndexAction();
 }else{
-    $action = ucfirst(strtolower($argv[1])) . "Action";
+    $action = ucfirst(strtolower($argv[2])) . "Action";
     if(!method_exists($object,$action)){
         echo $argv[2] . "方法不存在\r\n";die;
     }else{

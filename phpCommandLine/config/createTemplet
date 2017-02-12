@@ -1,0 +1,9 @@
+<?php
+namespace userController;
+use base\BaseController;
+class HelloController extends BaseController  {
+    public function IndexAction($param1='',$param2=''){
+        var_dump($param1,$param1);
+    }
+}
+return __NAMESPACE__;
