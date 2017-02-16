@@ -7,7 +7,7 @@ namespace base;
  * Date: 17-2-11
  * Time: 下午10:13
  */
-class BaseController{
+class BaseController extends Object {
     /**
      * 控制器默认的方法
      */
