@@ -15,11 +15,35 @@ class Application
      */
     public static function run(){
         require_once 'define.php';
+        /**
+         * composer 第三方包自动加载代码
+         */
+        require CORE_PATH . 'vendor/autoload.php';
+        /**
+         * 注册框架本事自动加载函数
+         */
         spl_autoload_register('self::auto');
         $db = Config::getConfig('db');
         return new self();
     }
 
+    /**
+     * webApp
+     */
+    public function webApp(){
+        if(DEBUG){
+            ini_set("display_errors", "On");
+            error_reporting(E_ALL | E_STRICT);
+            $whoops = new \Whoops\Run;
+            $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+            $whoops->register();
+        }
+    }
+
+    /**
+     * 命令行
+     * @param $argv
+     */
     public function console($argv){
         $controller = ucfirst(strtolower($argv[1]));
         $controllerName = $controller . "Controller";
