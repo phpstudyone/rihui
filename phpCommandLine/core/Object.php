@@ -5,7 +5,7 @@
  * Date: 2017/2/16
  * Time: 18:36
  */
-namespace base;
+namespace core;
 
 class Object{
 
