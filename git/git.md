@@ -7,6 +7,22 @@ git branch
 ```sh
 git checkout bug/#136147581_fix_the_idle_time_to_6_months
 ```
+
+### 新建分支
+```sh
+git checkout -b branchName
+```
+
+### 删除本地分支
+```sh
+git branch -D branchName
+```
+
+### 推送本地分支到远程
+```sh
+git push branchName origin branchName
+```
+
 ### 进行rebase操作
 ```sh
 git rebase origin/develop
