@@ -1,5 +1,7 @@
 <?php
 namespace base;
+use core\Controller;
+
 /**
  * 父类控制器
  * Created by PhpStorm.
@@ -7,7 +9,7 @@ namespace base;
  * Date: 17-2-11
  * Time: 下午10:13
  */
-class BaseController extends Object {
+class BaseController extends Controller  {
     /**
      * 控制器默认的方法
      */

@@ -1,5 +1,7 @@
 <?php
 namespace base;
+use core\Model;
+
 /**
  * 模型类父类
  * Created by PhpStorm.
@@ -7,7 +9,7 @@ namespace base;
  * Date: 2017/2/17
  * Time: 17:42
  */
-class BaseModel extends Object {
+class BaseModel extends Model  {
     public $tableName;
     public $pdo;
     public function aaa(){
