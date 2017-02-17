@@ -16,17 +16,10 @@ define('BASE_PATH',str_replace('\\','/',realpath(dirname(__FILE__).'/'))."/");
 require_once "config/main.php";
 require_once "base/Object.php";
 require_once "base/BaseController.php";
-
+spl_autoload_register('\base\Object::auto');
 $controller = ucfirst(strtolower($argv[1]));
 $controllerName = $controller . "Controller";
-$file = $controllerName . ".php" ;
-$filePath = USER_CONTROLLER_PATH . $file;
-
-if( !file_exists($filePath) ){
-    echo $filePath . "控制器文件不存在\r\n";die;
-}
-$namespace = require_once $filePath;
-$object = "\\" . $namespace . "\\" . $controllerName;
+$object = '\\userController\\' . $controllerName;
 $object = new $object;
 if(!isset($argv[2])){
     $object->IndexAction();

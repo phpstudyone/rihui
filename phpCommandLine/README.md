@@ -25,11 +25,10 @@ use base\BaseController;
 class NameController extends BaseController  {
     //...your code..
 }
-return __NAMESPACE__;
 ```
+* 命名空间需要和文件路径保持一致
 * 必须在userController文件夹下
 * 必须继承父类BaseController
-* 必须类外返回该类的命名空间
 * 必须大写类名首字母，其他小写，以Controller结尾
 * 必须大写方法名首字母，其他小写，以Action结尾
 
@@ -49,6 +48,7 @@ class HelloController extends BaseController  {
         var_dump($param1,$param1);
     }
 }
-return __NAMESPACE__;
 ```
 你也可以自定义你的模板文件，模板文件为config/createTemplet
+
+**删除了必须返回命名空间的限制**

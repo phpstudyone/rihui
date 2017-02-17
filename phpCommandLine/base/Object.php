@@ -38,4 +38,18 @@ class Object{
         $this->className = $class->getName();
         $this->shortName = $class->getShortName();
     }
+
+    /**
+     * 自动加载类
+     * @param $className
+     */
+    public static function auto($className){
+        $file = $className . ".php" ;
+        $filePath = str_replace('\\','/',$file);
+        $filePath = BASE_PATH . $filePath;
+        if( !file_exists($filePath) ){
+            echo $filePath . "控制器文件不存在\r\n";die;
+        }
+        require_once $filePath;
+    }
 }

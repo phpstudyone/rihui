@@ -35,4 +35,3 @@ class TestController extends BaseController  {
         file_put_contents($path,$str);
     }
 }
-return __NAMESPACE__;

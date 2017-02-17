@@ -6,4 +6,3 @@ class HelloController extends BaseController  {
         var_dump($param1,$param1);
     }
 }
-return __NAMESPACE__;
