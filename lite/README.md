@@ -57,3 +57,12 @@ class HelloController extends BaseController  {
 你也可以自定义你的模板文件，模板文件为config/createTemplet
 
 **删除了必须返回命名空间的限制**
+
+# webApp篇 #
+
+    框架引入第三方打印类sysmfony/var_dump，
+    函数dump和php内置var_dump用法一致，不过更友好
+    更多用法点击查看文档：[sysmfony/var_dump](https://symfony.com/doc/current/components/var_dumper.html)
+
+    引入第三方debug类filp/whoops,非常酷炫的效果
+    更多用法点击查看文档：[filp/whoops](https://packagist.org/packages/filp/whoops)
