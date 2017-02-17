@@ -23,6 +23,11 @@ git branch -D branchName
 git push branchName origin branchName
 ```
 
+### 为推送当前分支并建立与远程上游的跟踪，使用
+```sh
+git push --set-upstream origin develop
+```
+
 ### 进行rebase操作
 ```sh
 git rebase origin/develop
