@@ -16,8 +16,37 @@ class Router{
      * @param $str
      */
     public static function distribute($str){
-        $a = Config::getConfig('default_action',true);
-        dump($str,$a);
-        (new Request())->get();
+        $index = strpos($str,'?');
+        if ($index !== false){
+            $str = substr($str,0,$index);
+        }
+        $str =trim($str,'/');
+        $strArr = explode('/',$str);
+        if(!isset($strArr[0]) || !$strArr[0]){
+            $default_router = Config::getConfig('default_router',true);
+            $controller = isset($default_router['controller']) ? $default_router['controller'] : false;
+            $_GET['controller'] = $controller ? $controller : DEFAULT_CONTROLLER;
+        }else{
+            $_GET['controller'] = $strArr[0];
+        }
+        if(isset($strArr[1]) && $strArr[1]){
+            $_GET['action'] = $strArr[1];
+        }else{
+            $default_router = Config::getConfig('default_router',true);
+            $action= isset($default_router['action']) ? $default_router['action'] : false;
+            $_GET['action'] = $action ? $action : DEFAULT_ACTION;
+        }
+
+        $count = count($strArr);
+        if($count >= 3){
+            for ($i=2 ; $i < $count ; $i = $i+2){
+                $_GET[$strArr[$i]] = isset($strArr[$i+1]) ? $strArr[$i+1] : '' ;
+            }
+        }
+        $controller = ucfirst(strtolower($_GET['controller']));
+        $controllerName = $controller . "Controller";
+        $object = '\\userController\\' . $controllerName;
+        $object = new $object;
+        $obj = $object = '\\userController\\' . $_GET['controller'];
     }
 }
