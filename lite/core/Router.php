@@ -43,10 +43,12 @@ class Router{
                 $_GET[$strArr[$i]] = isset($strArr[$i+1]) ? $strArr[$i+1] : '' ;
             }
         }
-        $controller = ucfirst(strtolower($_GET['controller']));
+        $request = new Request();
+        $controller = ucfirst(strtolower($request->get('controller')));
         $controllerName = $controller . "Controller";
         $object = '\\userController\\' . $controllerName;
         $object = new $object;
-        $obj = $object = '\\userController\\' . $_GET['controller'];
+        $action = ucfirst(strtolower($request->get('action'))) . "Action";
+        $object->$action();
     }
 }
