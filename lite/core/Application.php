@@ -14,17 +14,27 @@ class Application
      * 应用启动方法，加载配置文件、各种必须文件，初始化工作等
      */
     public static function run(){
-        require_once 'define.php';
-        /**
-         * composer 第三方包自动加载代码
-         */
-        require CORE_PATH . 'vendor/autoload.php';
-        /**
-         * 注册框架本事自动加载函数
-         */
-        spl_autoload_register('self::auto');
-        $db = Config::getConfig('db');
-        return new self();
+        try{
+            require_once 'define.php';
+            /**
+             * composer 第三方包自动加载代码
+             */
+            require CORE_PATH . 'vendor/autoload.php';
+            /**
+             * 注册框架本事自动加载函数
+             */
+            spl_autoload_register('self::auto');
+            $db = Config::getConfig('db');
+            return new self();
+        }catch (\Exception $e){
+            //做一些日志记录之类的工作
+            /**
+             * 事实上，因为异常或者错误信息，都被第三方Whoops给接受了，
+             * 所以这里是无法捕获到异常的，把这个try-catch放在webApp方法能
+             * 捕获到异常但是又无法使用第三方Whoops。。。。。
+             * 也许需要重写Whoops方法，或者看看是否有提供api
+             */
+        }
     }
 
     /**
@@ -38,6 +48,7 @@ class Application
             $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
             $whoops->register();
         }
+        Router::distribute($_SERVER['REQUEST_URI']);
     }
 
     /**

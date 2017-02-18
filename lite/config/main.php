@@ -7,4 +7,8 @@
  */
 return $config = [
     'db' => require_once "db.php",
+    'default_router' => [
+        'controller' => 'test',
+        'action' => 'test'
+    ]
 ];
