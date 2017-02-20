@@ -20,7 +20,12 @@ git branch -D branchName
 
 ### 推送本地分支到远程
 ```sh
-git push branchName origin branchName
+git push origin branchName
+```
+
+### 为推送当前分支并建立与远程上游的跟踪，使用
+```sh
+git push --set-upstream origin develop
 ```
 
 ### 进行rebase操作
@@ -70,6 +75,11 @@ git reset --hard 01d8df0e94b8e5ed2fff1388d8bd41c21cc1d4e0
 ### 重置最近三次提交 ###
 ``` sh
 git reset --hard HEAD~3
+```
+
+### 本地代码不对文件做版本控制 ###
+``` sh
+git update-index --assume-unchanged app/webroot/index.php
 ```
 
     git checkout HEAD~3 --Gemfile.lock
