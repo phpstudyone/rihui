@@ -7,17 +7,16 @@
  */
 namespace userController;
 use base\BaseController;
+
 class TestController extends BaseController  {
     /**
      * 测试方法
      * @param string $param1
      * @param string $param2
      */
-    public function TestAction($param1='',$param2=''){
-        if($param1 && $param2){
-            echo $param1 . $param2;die;
-        }
-        echo 1111;die;
+    public function TestAction(){
+        dump($this->request->get('c'));
+        dump($this);
     }
 
     /**
