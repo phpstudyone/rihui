@@ -56,9 +56,9 @@ class Application
      * @param $argv
      */
     public function console($argv){
-        $controller = ucfirst(strtolower($argv[1]));
-        $controllerName = $controller . "Controller";
-        $object = '\\userController\\' . $controllerName;
+        $console = ucfirst(strtolower($argv[1]));
+        $consoleName = $console . "Console";
+        $object = '\\console\\' . $consoleName;
         $object = new $object;
         if(!isset($argv[2])){
             $object->IndexAction();

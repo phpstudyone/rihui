@@ -17,6 +17,20 @@ git checkout -b branchName
 ```sh
 git branch -D branchName
 ```
+### 拉去远程分支到本地
+```sh
+git fetch origin branchName:branchName
+```
+
+### 拉去远程分支更新到本地
+```sh
+git pull origin branchName
+```
+
+### 本地分支建立到远程分支的跟踪（这样只需要执行git pull 就可以拉取更新）
+```sh
+git branch --set-upstream-to=origin/branchName branchName
+```
 
 ### 推送本地分支到远程
 ```sh

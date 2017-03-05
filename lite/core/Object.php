@@ -10,6 +10,12 @@ namespace core;
 class Object{
 
     /**
+     * 获取配置组件
+     * @var object
+     */
+    public $config;
+
+    /**
      * 命名空间
      * @var string
      */
@@ -37,5 +43,9 @@ class Object{
         $this->namespace = $class->getNamespaceName();
         $this->className = $class->getName();
         $this->shortName = $class->getShortName();
+        $this->request = new Request();
+        $this->post = $this->request->post();
+        $this->get = $this->request->get();
+        $this->config = Config::getConfig();
     }
 }
