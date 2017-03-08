@@ -1,5 +1,3 @@
 # Jason's read book
 
-增加常用git命令
-
-增加php命令行执行文件
+删除lite框架，该仓库只做读书笔记和资料整理
