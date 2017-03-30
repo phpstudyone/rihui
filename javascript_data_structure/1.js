@@ -20,7 +20,10 @@ var commonFun = {
         }
         return arr;
     },
-    swapDiv : (div1.div2) => {
-
+    swapDiv :  (div1id,div2id) => {
+        var t = document.getElementById(div1id).innerHTML;
+        document.getElementById(div1id).innerHTML=document.getElementById(div2id).innerHTML;
+        document.getElementById(div2id).innerHTML=t;
+        reutrn true;
     }
 };
