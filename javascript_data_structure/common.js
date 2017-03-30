@@ -11,7 +11,7 @@ let commonFun = {
      * @param  int length [description]
      * @return array        [description]
      */
-    randonm :  (m,n,length) => {
+    randonm :  ( m , n , length ) => {
         let arr = [];
         let a = m > n ? m : n;
         let b = a == m ? n : m;
@@ -25,10 +25,18 @@ let commonFun = {
      * @param div1id
      * @param div2id
      */
-    swapDiv :  (div1id,div2id) => {
-        let t = document.getElementById(div1id).innerHTML;
-        document.getElementById(div1id).innerHTML=document.getElementById(div2id).innerHTML;
-        document.getElementById(div2id).innerHTML=t;
+    swapDiv :  ( div_1_id ,div_2_id ) => {
+        let t = document.getElementById(div_1_id).innerHTML;
+        document.getElementById(div_1_id).innerHTML=document.getElementById( div_2_id ).innerHTML;
+        document.getElementById(div_2_id).innerHTML=t;
+    },
+
+    /**
+     * 初始化条形图
+     * @param data
+     */
+    init_bar_chart : ( data ) => {
+        // .......
     }
 };
 
@@ -97,7 +105,5 @@ let sorts = {
 let sortCallback = (i , j , name) => {
     let div_1 = name + '_' + i;
     let div_2 = name + '_' + j;
-    commonFun[ randonm ]( div_1 , div_2 );
+    commonFun[ swapDiv ]( div_1 , div_2 );
 };
-
-
