@@ -2,7 +2,7 @@
  * Created by apple on 2017/3/30.
  * 公共的js方法
  */
-var commonFun = {
+let commonFun = {
     /**
      * 生成length位 m~n 之间的随机数数组
      * 
@@ -12,18 +12,50 @@ var commonFun = {
      * @return array        [description]
      */
     randonm :  (m,n,length) => {
-        var arr = [];
-        var a = m > n ? m : n;
-        var b = a == m ? n : m;
-        for (var i = 0; i < length ; i++){
+        let arr = [];
+        let a = m > n ? m : n;
+        let b = a == m ? n : m;
+        for (let i = 0; i < length ; i++){
             arr[i] = Math.round(Math.random() * (a - b ) + b);
         }
         return arr;
     },
     swapDiv :  (div1id,div2id) => {
-        var t = document.getElementById(div1id).innerHTML;
+        let t = document.getElementById(div1id).innerHTML;
         document.getElementById(div1id).innerHTML=document.getElementById(div2id).innerHTML;
         document.getElementById(div2id).innerHTML=t;
-        reutrn true;
     }
 };
+
+/**
+ * 排序类
+ * @type {{}}
+ */
+let sorts = {
+    /**
+     * 冒泡排序
+     * @param data 要排序的数组
+     * @param bool true 升序，false 降序
+     * @param callback 回调函数
+     * @returns {*} array 排序后的数组
+     */
+    bubbleSort : (data,bool,callback) => {
+        let length = data.length;
+        for (let i = 0 ; i < length ; i++ ){
+            for (let j = 0 ; j < length - i - 1 ; j++ ){
+                let flag = bool ? data[ j ] > data[ j + 1 ] : data[ j ] < data[ j + 1 ] ;
+                if ( flag ){
+                    let temp = data[ j ];
+                    data[ j ] = data [ j + 1 ] ;
+                    data [ j + 1] = temp;
+                    if( typeof callback === 'function' ){
+                        callback();
+                    }
+                }
+            }
+        }
+        return data;
+    }
+};
+
+
