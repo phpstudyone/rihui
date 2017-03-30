@@ -79,13 +79,25 @@ let sorts = {
                     data [ i ] = data [ j ];
                     data [ j ] = temp;
                     if( typeof callback === 'function' ){
-                        callback( j , j + 1 , name );
+                        callback( i , j , name );
                     }
                 }
             }
         }
         return data;
     }
+};
+
+/**
+ * 供排序使用的回调函数
+ * @param i
+ * @param j
+ * @param name
+ */
+let sortCallback = (i , j , name) => {
+    let div_1 = name + '_' + i;
+    let div_2 = name + '_' + j;
+    commonFun[ randonm ]( div_1 , div_2 );
 };
 
 
