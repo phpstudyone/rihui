@@ -31,13 +31,7 @@ let commonFun = {
         document.getElementById(div_2_id).innerHTML=t;
     },
 
-    /**
-     * 初始化条形图
-     * @param data
-     */
-    init_bar_chart : ( data ) => {
-        // .......
-    }
+
 };
 
 /**
@@ -54,7 +48,7 @@ let sorts = {
      */
     bubbleSort : ( data , bool , callback ) => {
         let length = data.length;
-        for ( let i = 0 ; i < length ; i++ ){
+        for (  let i = 0 ; i < length ; i++ ){
             for ( let j = 0 ; j < length - i - 1 ; j++ ){
                 let flag = bool ? data[ j ] > data[ j + 1 ] : data[ j ] < data[ j + 1 ] ;
                 if ( flag ){
@@ -62,7 +56,7 @@ let sorts = {
                     data[ j ] = data [ j + 1 ] ;
                     data [ j + 1] = temp;
                     if( typeof callback === 'function' ){
-                        callback( j , j + 1 , name );
+                        callback( j , j + 1 , 'div' );
                     }
                 }
             }
@@ -87,7 +81,7 @@ let sorts = {
                     data [ i ] = data [ j ];
                     data [ j ] = temp;
                     if( typeof callback === 'function' ){
-                        callback( i , j , name );
+                        callback( i , j , 'div_' );
                     }
                 }
             }
@@ -105,5 +99,5 @@ let sorts = {
 let sortCallback = (i , j , name) => {
     let div_1 = name + '_' + i;
     let div_2 = name + '_' + j;
-    commonFun[ swapDiv ]( div_1 , div_2 );
+    commonFun[ 'swapDiv' ]( div_1 , div_2 );
 };
