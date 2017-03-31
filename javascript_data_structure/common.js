@@ -31,13 +31,7 @@ let commonFun = {
         document.getElementById(div_2_id).innerHTML=t;
     },
 
-    /**
-     * 初始化条形图
-     * @param data
-     */
-    init_bar_chart : ( data ) => {
-        // .......
-    }
+
 };
 
 /**
