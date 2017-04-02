@@ -26,9 +26,15 @@ let commonFun = {
      * @param div2id
      */
     swapDiv :  ( div_1_id ,div_2_id ) => {
+        let div_1 = $('#'+div_1_id);
+        let div_2 = $('#'+div_2_id);
+        div_1.children().children().css({'border':'2px solid red'});
+        div_2.children().children().css({'border':'2px solid red'});
         let t = document.getElementById(div_1_id).innerHTML;
         document.getElementById(div_1_id).innerHTML=document.getElementById( div_2_id ).innerHTML;
         document.getElementById(div_2_id).innerHTML=t;
+        div_1.children().children().css({'border':'none'});
+        div_2.children().children().css({'border':'none'});
     },
 
 
