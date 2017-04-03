@@ -6,15 +6,15 @@ let commonFun = {
     /**
      * 生成length位 m~n 之间的随机数数组
      * 
-     * @param  int m      [description]
-     * @param  int n      [description]
-     * @param  int length [description]
+     * @param   m      [description]
+     * @param   n      [description]
+     * @param   length [description]
      * @return array        [description]
      */
     randonm :  ( m , n , length ) => {
         let arr = [];
         let a = m > n ? m : n;
-        let b = a == m ? n : m;
+        let b = a === m ? n : m;
         for (let i = 0; i < length ; i++){
             arr[i] = Math.round(Math.random() * (a - b ) + b);
         }
@@ -22,8 +22,8 @@ let commonFun = {
     },
     /**
      * 两个div互换位置
-     * @param div1id
-     * @param div2id
+     * @param div_1_id
+     * @param div_2_id
      */
     swapDiv :  ( div_1_id ,div_2_id ) => {
         let t = document.getElementById(div_1_id).innerHTML;
