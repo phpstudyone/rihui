@@ -3,17 +3,17 @@
 此篇不讲排序算法的实现（实际我也不懂^..^），只是实现动态展示排序算法。
 页面加载的时候
 
-1. 生成10位随机数
+### 1. 生成10位随机数
 
 `let data = commonFun['randonm'](0,50,10);`
 
 其中`randonm`方法生成随机数数组。接受三个参数，第一二个参数确定生成的随机数范围，第三个参数确定返回的数组长度。
-2. 初始化条形图
+### 2. 初始化条形图
 
 `init_bar_chart(data);`
 
 该方法在页面初始化出一个条形图，参数为上一个函数返回的数组。
-3. 实现动态展示排序效果
+### 3. 实现动态展示排序效果
 
 `sorts['selectionSort'](data,false,sortCallback);`
 
@@ -21,13 +21,13 @@
 
 `sortCallback`是排序方法的一个回调函数，用来实现一些特定的效果：两个`div`互换
 
-##具体效果：
+## 具体效果：
 
-###选择排序降序效果
+### 选择排序降序效果
 
 ![选择排序降序](https://raw.githubusercontent.com/phpstudyOne/rihui/master/javascript_data_structure/sort/images/selectSort.gif)
 
-###冒泡排序升序效果
+### 冒泡排序升序效果
 
 ![冒泡排序升序](https://raw.githubusercontent.com/phpstudyOne/rihui/master/javascript_data_structure/sort/images/selectSort.gif)
 
