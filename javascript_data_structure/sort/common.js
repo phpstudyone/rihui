@@ -26,15 +26,9 @@ let commonFun = {
      * @param div2id
      */
     swapDiv :  ( div_1_id ,div_2_id ) => {
-        let div_1 = $('#'+div_1_id);
-        let div_2 = $('#'+div_2_id);
-        div_1.children().children().css({'border':'2px solid red'});
-        div_2.children().children().css({'border':'2px solid red'});
         let t = document.getElementById(div_1_id).innerHTML;
         document.getElementById(div_1_id).innerHTML=document.getElementById( div_2_id ).innerHTML;
         document.getElementById(div_2_id).innerHTML=t;
-        div_1.children().children().css({'border':'none'});
-        div_2.children().children().css({'border':'none'});
     },
 
 
@@ -87,7 +81,7 @@ let sorts = {
                     data [ i ] = data [ j ];
                     data [ j ] = temp;
                     if( typeof callback === 'function' ){
-                        callback( i , j , 'div_' );
+                        callback( i , j , 'div' );
                     }
                 }
             }
@@ -102,8 +96,11 @@ let sorts = {
  * @param j
  * @param name
  */
+let count = 0;
 let sortCallback = (i , j , name) => {
     let div_1 = name + '_' + i;
     let div_2 = name + '_' + j;
-    commonFun[ 'swapDiv' ]( div_1 , div_2 );
+    setTimeout(()=> {
+        commonFun[ 'swapDiv' ]( div_1 , div_2 );
+    }, ++count * 500);
 };
