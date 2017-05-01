@@ -31,6 +31,20 @@ let commonFun = {
         document.getElementById(div_2_id).innerHTML=t;
     },
 
+    /**
+     * 两个div互换数据
+     * @param div_1_id
+     * @param div_2_id
+     */
+    swapValue :  ( div_1_id ,div_2_id ) => {
+        let value1 = $('#' + div_1_id).children().text();
+        let value2 = $('#' + div_2_id).children().text();
+        $('#' + div_1_id).width(value2+'%');
+        $('#' + div_1_id).children().text(value2);
+        $('#' + div_2_id).width(value1+'%');
+        $('#' + div_2_id).children().text(value1);
+    },
+
 
 };
 
@@ -56,7 +70,8 @@ let sorts = {
                     data[ j ] = data [ j + 1 ] ;
                     data [ j + 1] = temp;
                     if( typeof callback === 'function' ){
-                        callback( j , j + 1 , 'div' );
+                        // callback( j , j + 1 , 'div' );
+                        callback( j , j + 1 , 'length' );
                     }
                 }
             }
@@ -101,6 +116,7 @@ let sortCallback = (i , j , name) => {
     let div_1 = name + '_' + i;
     let div_2 = name + '_' + j;
     setTimeout(()=> {
-        commonFun[ 'swapDiv' ]( div_1 , div_2 );
-    }, ++count * 500);
+        // commonFun[ 'swapDiv' ]( div_1 , div_2 );
+        commonFun[ 'swapValue' ]( div_1 , div_2 );
+    }, ++count * 200);
 };
