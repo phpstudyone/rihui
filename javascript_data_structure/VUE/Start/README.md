@@ -18,7 +18,8 @@ var app6 = new Vue({
   }
 })
 ```
-![1.gif](./images/1.gif)
+
+![1.gif](https://raw.githubusercontent.com/phpstudyOne/rihui/master/javascript_data_structure/VUE/Start/images/1.gif)
 
 很牛逼的一个功能，vue渲染的页面的是 `数据驱动` ，修改VUE对象的data数据，那么页面会跟着改变。
 
@@ -72,13 +73,13 @@ js代码：
     });
 ```
 实现的效果：
-![gif.gif](./images/GIF.gif)
+![gif.gif](https://raw.githubusercontent.com/phpstudyOne/rihui/master/javascript_data_structure/VUE/Start/images/GIF.gif)
 
 可以看到，不到50行的代码就实现了这些效果。
 如果使用js/jQuery来实现这些效果要怎么做：
 
-. Ajax请求json数据，遍历数据操作dom。
-. Ajax请求后台处理好的分页页面数据，直接把页面返回，把页面插入到table所在的div。
-. Pjaxq请求分页页面替换原dom。
+* Ajax请求json数据，遍历数据操作dom。
+* Ajax请求后台处理好的分页页面数据，直接把页面返回，把页面插入到table所在的div。
+* Pjaxq请求分页页面替换原dom。
 
 其中第一种方式对dom的操作最繁杂，后两种方式又会对后台操作做额外的处理。
