@@ -4,12 +4,12 @@ APACHE SERVICE SETTING
 
 **apache关于安全和优化的一些设置**
 ***
-###一：Disable HTTP TRACE Method for Apache
+### 一：Disable HTTP TRACE Method for Apache
 **禁用apache的http的trace方法**
 
     在apache的配置文件中查找 TraceEnable 配置，如果有，改为 OFF ，不存在的话，在文件末尾添加
     TraceEnable off
-####1. TraceEnable off 前的测试
+#### 1. TraceEnable off 前的测试
 执行
 ```sh
 openssl s_client -connect local.tbl.com:443
@@ -41,7 +41,7 @@ curl -i -X TRACE https://twobrightlights.com/
 参考资料：[Disabling the TRACE method in Apache2](http://www.alphadevx.com/a/383-Disabling-the-TRACE-method-in-Apache2)
 
 ***
-###二：Disable web directory browsing for all directories and subdirectories
+### 二：Disable web directory browsing for all directories and subdirectories
 **禁止浏览项目目录**
 
     修改 httpd-vhosts.conf 中 VirtualHost 的 Options 配置
@@ -57,7 +57,7 @@ curl -i -X TRACE https://twobrightlights.com/
 只有文件存在，才正常返回
 ![isexit](https://raw.githubusercontent.com/phpstudyOne/rihui/master/apache_service_setting/images/isexit.png)
 ***
-###三：Use Digest Authentication
+### 三：Use Digest Authentication
 **使用digest Authentication**
 （这里我们使用第二种配置，两种配置以本地为例）
 ####1 . 配置Apache Basic 认证
@@ -97,7 +97,7 @@ path：`/Applications/XAMPP/htdocs/tbl/app/webroot/log/.htaccess`
 
 只有输入正确的账号密码，才会显示内容。
 
-####2. 配置Apache Digest 认证
+#### 2. 配置Apache Digest 认证
 1.生成密码文件 （注意和 Basic方式生成的密码区别，这个会要求配置 realm ）
 ```sh
 apple@appledeMac-mini:/Applications/XAMPP/htdocs/tbl/app/webroot/log develop$ htdigest -c anna.txt "Digest Encrypt" jason
@@ -132,7 +132,7 @@ path：`/Applications/XAMPP/htdocs/tbl/app/webroot/log/.htaccess`
 **（以上.htaccess 配置也可以写入apache的VirtualHost 中，但此种配置每次修改之后都要求重启apache才能生效）**
 参考资料：[Apache Module mod_auth_digest](https://httpd.apache.org/docs/2.4/mod/mod_auth_digest.html)
 ***
-###四：Disable insecure TLS/SSL protocol support AND Enable only TLS 1.2
+### 四：Disable insecure TLS/SSL protocol support AND Enable only TLS 1.2
 **禁用不安全的TLS/SSL链接，只是用TLS version 1.2**
 
 ####  1.搜索SSLProtocol,查看配置文件
@@ -151,7 +151,7 @@ grep -i -r "SSLProtocol" /etc/httpd
     其中 all -SSLv 表示支持所有所有类型的ssl，但是不支持SSLv3。
     这里我们需要更改为 SSLProtocol  TLSv1.2
 
-####2. 搜索SSLEngine,查看配置文件
+#### 2. 搜索SSLEngine,查看配置文件
 ```sh
 grep -i -r "SSLEngine" /etc/apache2
 ```
@@ -164,9 +164,15 @@ grep -i -r "SSLEngine" /etc/httpd
 使用vim编辑器，进入到 `vim /etc/apache2/sites-enabled/qa-www-server-ssl.conf` 编辑以下部分
 ![vim2](https://raw.githubusercontent.com/phpstudyOne/rihui/master/apache_service_setting/images/vim2.png)
 
-####3. 重启apache服务器
+#### 3. 重启apache服务器
 ``` sh
 service apache2 restart
 ```
 参考资料：[Apache Module mod_ssl](http://httpd.apache.org/docs/2.4/mod/mod_ssl.html#sslengine)
 ***
+
+### 四：Disable inode-based ETag generation in the Apache config
+
+apache 配置文件 增加 ：`FileETag None`
+
+使用 `curl -I qa-www.twobrightlights.com` 查看效果
