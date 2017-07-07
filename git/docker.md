@@ -10,8 +10,17 @@ docker run --name mysql-2 -e MYSQL_ROOT_PASSWORD=123456 -p 172.26.10.124:3306:33
 查看运行的容器
 docker ps
 
+查看所有的容器
+docker ps -a
+
 进入容器
 docker exec -ti mysql-2  bash
 
 停止容器
 docker stop 27
+
+删除容器
+docker rm xxx
+
+重启容器
+docker start xxxx
