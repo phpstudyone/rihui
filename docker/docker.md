@@ -59,3 +59,8 @@ docker start xxxx
 ```sh
 docker login -u username -p password domain
 ```
+
+## ubuntu 镜像启动
+```sh
+docker run -i -t ubuntu:16.04 /bin/bash
+```
