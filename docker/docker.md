@@ -64,3 +64,8 @@ docker login -u username -p password domain
 ```sh
 docker run -i -t ubuntu:16.04 /bin/bash
 ```
+后台运行
+
+```sh
+docker run -i -t  -d --name ubuntu-16 ubuntu:16.04 /bin/bash
+```
