@@ -85,3 +85,13 @@ docker tag b58a58b5eeae  phpstudy/mysql-tbl:1.03
 ```docker
 docker push phpstudy/mysql-tbl:1.03
 ```
+
+## ubuntu 镜像启动
+```sh
+docker run -i -t ubuntu:16.04 /bin/bash
+```
+## 后台运行
+
+```sh
+docker run -i -t  -d --name ubuntu-16 ubuntu:16.04 /bin/bash
+```
