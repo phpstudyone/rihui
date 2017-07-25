@@ -60,11 +60,37 @@ docker start xxxx
 docker login -u username -p password domain
 ```
 
+## docker 打包推送到hub.docker.com
+
+### 登录
+
+```docker
+docker login
+```
+
+### 打包要push的容器为一个镜像
+
+```docker
+docker commit -m"包含tbl完整数据的数据库" 624288e04ad2 mysql-jason:1.02
+```
+
+### 给images打tag
+
+```docker
+docker tag b58a58b5eeae  phpstudy/mysql-tbl:1.03
+```
+
+### 推送
+
+```docker
+docker push phpstudy/mysql-tbl:1.03
+```
+
 ## ubuntu 镜像启动
 ```sh
 docker run -i -t ubuntu:16.04 /bin/bash
 ```
-后台运行
+## 后台运行
 
 ```sh
 docker run -i -t  -d --name ubuntu-16 ubuntu:16.04 /bin/bash
