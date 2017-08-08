@@ -2,11 +2,20 @@
 
 PCI 标准是为了最大限度保护持卡人数据的一套标准。要求很多，可以看 [PCI标准](https://www.authorize.net/resources/pcicompliance/) 站点了解。要求挺多，对于程序猿来说，要保证的是用户的任何支付信息，都不走自己的服务器，不保存在自己的数据库。
 
+实现符合PCI标准的支付，有两种方式
+
++ 加载Authorize.net的托管表单
++ 使用AcceptJs
+
+Authorize.net的托管表单，加载方便，安全性高，但是用户定制程度不高，只能稍微改改表单样式，AcceptJs可以使用自己设计的表单，调用AcceptJs做安全性校验和数据发送接收。
+
 ## 一. 前期准备工作
 
 ### 1.1 注册一个沙盒环境账号 (必须)
 
 [沙盒环境](https://sandbox.authorize.net/)账号，可以用来在[api文档页面](http://developer.authorize.net/api/reference/index.html)直接调试各种接口，也可以在沙盒里面查看各种扣款记录。
+
+如果项目要上线，请注册[生产环境](https://account.authorize.net/)账号，这里全部使用沙盒环境。
 
 ### 1.2 下载Authorize.net SDK （非必须）
 
@@ -76,3 +85,39 @@ XML格式我没有去写代码测试，各位有兴趣可以自行测试，也�
 |Add Shipping Profile| [Add Shipping Profile](https://accept.authorize.net/customer/addShipping) |[Add Shipping Profile](https://accept.authorize.net/customer/addShipping)|
 |Edit Payment Profile| [Edit Payment Profile](https://accept.authorize.net/customer/editPayment) |[Edit Payment Profile](https://accept.authorize.net/customer/editPayment)|
 |Edit Shipping Profile| [Edit Shipping Profile](https://accept.authorize.net/customer/editShipping) |[Edit Shipping Profile](https://accept.authorize.net/customer/editShipping)|
+
+## 二. iframe 加载托管表单方式发起支付
+
+## 三. AccceptJs方式发起支付
+
+# iframe 加载托管表单方式
+
+## 请求 getHostedPaymentPageRequest ，获取 token 。
+
+url:[getHostedPaymentPageRequest](http://developer.authorize.net/api/reference/index.html#payment-transactions-get-an-accept-payment-page)
+
+请求该URL，可以指定加载表单的样式等各种参数，具体参考：[Accept Hosted feature details page](http://developer.authorize.net/api/reference/features/accept_hosted.html)
+
+### 如有必要，需要先获取用户的信息，回填form表单
+
+## 使用上面获取的token，初始化form表单。
+
+```html
+<form id="send_hptoken" action="https://test.authorize.net/payment/payment" method="post" target="load_payment" >
+    <input type="hidden" name="token" value="<?php echo $token ?>" />
+    <button type="submit">pay</button>
+</form>
+
+<iframe id="load_payment" class="embed-responsive-item" name="load_payment" width="100%" height="650px" frameborder="0" scrolling="no">
+</iframe>
+```
+
+## 提交上一步的表单，会加载authorizenet的表单到iframe
+
+当新用户还不存在Customer时处理： （决定是否需要单独页面为用户创建authorizenet的customer）
+
+直接发起支付，BillTo 信息设置为空，看是否会创建 CustomerId 。
+
+支付完成后看是否会返回CustomerId(如果返回，查看设置和不设置)
+
+调试支付返回页面和返回页面设置 。
