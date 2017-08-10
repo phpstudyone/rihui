@@ -57,7 +57,7 @@ $curlError = curl_error($curl);
 curl_close($curl);
 ```
 
-返回的数据也是JSON格式，but。。。。，这个返回的json数据，是无法用
+返回的数据也是`JSON`格式，but。。。。，这个返回的json数据，是无法用
 
 ```php
 json_decode($result,true)
@@ -92,11 +92,11 @@ XML格式我没有去写代码测试，各位有兴趣可以自行测试，也�
 
 #### 1.1. 为用户申请创建CustomerProfileID
 
-需要请求的API : createCustomerProfileRequest
+需要请求的API : `createCustomerProfileRequest`
 API的详细文档地址：[createCustomerProfileRequest](http://developer.authorize.net/api/reference/index.html#customer-profiles-create-customer-profile)
 CustomerProfile详细介绍：[customer_profiles](http://developer.authorize.net/api/reference/features/customer_profiles.html)
 
-该API可以在创建CustomerProfileId 的同时，也创建PaymentProfileId 。但是PaymentProfileId需要的参数都是涉及到用户敏感信息的，按照PCI标准，是不允许商户收集，所以需要使用Authorize.net的托管表单来创建。
+该API可以在创建`CustomerProfileId` 的同时，也创建`PaymentProfileId` 。但是`PaymentProfileId`需要的参数都是涉及到用户敏感信息的，按照PCI标准，是不允许商户收集，所以需要使用Authorize.net的托管表单来创建。
 所以这一步只简单的传递几个参数即可，使用SDK创建代码：
 
 ```php
@@ -113,10 +113,10 @@ $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANe
 
 #### 1.2. 为添加PaymentInfo托管表单申请token
 
-需要请求的API : getHostedProfilePageRequest
+需要请求的API : `getHostedProfilePageRequest`
 API的详细文档地址：[getHostedProfilePageRequest](http://developer.authorize.net/api/reference/index.html#customer-profiles-get-accept-customer-profile-page)
 
-用得上一步创建的CustomerProfileId `$profileId = $response->getCustomerProfileId();` 来获取token
+用得上一步创建的`CustomerProfileId` `$profileId = $response->getCustomerProfileId();` 来获取`token`
 
 ```php
 $setting = new AnetAPI\SettingType();
@@ -143,7 +143,7 @@ $response = $controller->executeWithApiResponse(
 </iframe>
 ```
 
-此时该iframe里面还没有任何东西，需要提交这个from表单才能加载托管表单，这里给一个函数让他页面加载的时候自动提交以加载托管表单。
+此时该`iframe`里面还没有任何东西，需要提交这个`form`表单才能加载托管表单，这里给一个函数让他页面加载的时候自动提交以加载托管表单。
 
 ```js
 var button = document.getElementById('submit');
@@ -157,7 +157,7 @@ button.click();
 `hostedProfileReturnUrl` ： 设置托管会话结束(用户点击SAVE)返回给用户的页面 (这里省略)
 `hostedProfileIFrameCommunicatorUrl` : 用来接受、处理Authorize.net响应的页面
 
-上面设置的hostedProfileIFrameCommunicatorUrl的页面为`authorizenet/special`
+上面设置的`hostedProfileIFrameCommunicatorUrl`的页面为`authorizenet/special`
 
 ```javascript
 function callParentFunction(str) {
@@ -333,8 +333,10 @@ $response = $controller->executeWithApiResponse( \net\authorize\api\constants\AN
 API的详细文档地址：[getHostedPaymentPageRequest](http://developer.authorize.net/api/reference/index.html#recurring-billing-create-a-subscription-from-customer-profile)
 关于APB的详细介绍请看：[recurring_billing](http://developer.authorize.net/api/reference/features/recurring_billing.html)
 
+可以看到，很多API都是需要 `CustomerProfileId` 和 `paymentProfileId` 的，为了方便，可以把用户的`CustomerProfileId` 和 最新的`paymentProfileId` 保存在数据库。
+
 关于测试请看：[testing_guide](https://developer.authorize.net/hello_world/testing_guide/)
-可以填写不同的 Zip Code 和 Card Code 来模拟不同的错误返回
+可以填写不同的 `Zip Code` 和 `Card Code` 来模拟不同的错误返回
 
 ## 三. AccceptJs方式发起支付
 
