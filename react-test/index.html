@@ -1,0 +1,161 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+</head>
+<body>
+    <div id="root">
+
+    </div>
+    <div id="root1">
+
+    </div>
+
+    <script type="text/babel" >
+
+      class App extends React.Component {
+
+        /**
+         * 构造函数
+         * @param {*} props 
+         */
+        constructor(props){
+            super(props);
+            this.state = {
+                categories:[], 
+                albumTypes:[
+                    {
+                        id:1,
+                        name:'weddings',
+                        categories:[
+                            {
+                                id:1,
+                                name:'wedding day1'
+                            },
+                            {
+                                id:2,
+                                name:'wedding day2'
+                            },{
+                                id:3,
+                                name:'wedding day3'
+                            },{
+                                id:4,
+                                name:'wedding day4'
+                            }
+                            
+                        ]
+                    },
+                    {
+                        id:2,
+                        name:'weddings1',
+                        categories:[
+                            {
+                                id:11,
+                                name:'wedding2 day1'
+                            },
+                            {
+                                id:22,
+                                name:'wedding2 day2'
+                            },{
+                                id:33,
+                                name:'wedding2 day3'
+                            },{
+                                id:44,
+                                name:'wedding2 day4'
+                            }
+                            
+                        ]
+                    },
+                    {
+                        id:3,
+                        name:'weddings2',
+                        categories:[
+                            {
+                                id:111,
+                                name:'wedding3 day1'
+                            },
+                            {
+                                id:222,
+                                name:'wedding3 day2'
+                            },{
+                                id:333,
+                                name:'wedding3 day3'
+                            },{
+                                id:444,
+                                name:'wedding3 day4'
+                            }
+                            
+                        ]
+                    }
+                    ,{
+                        id:4,
+                        name:'weddings3',
+                        categories:[
+                            {
+                                id:1111,
+                                name:'wedding4 day1'
+                            },
+                            {
+                                id:2222,
+                                name:'wedding4 day2'
+                            },{
+                                id:3333,
+                                name:'wedding4 day3'
+                            },{
+                                id:4444,
+                                name:'wedding5 day4'
+                            }
+                            
+                        ]
+                    }
+                ],
+                inputValue:''
+            }
+        }
+
+        albumTypesChange = (e)=>{
+            let albumType = this.state.albumTypes.find(albumType => e.target.value == albumType.id);
+            this.setState({
+                categories : albumType.categories
+            });
+        }
+
+        render() {
+            return (
+                <div className="App">
+                <header className="App-header">
+                    <h1 className="App-title">Welcome to React</h1>
+                </header>
+                <select name="albumTypes" onChange={this.albumTypesChange}>
+                    {
+                        this.state.albumTypes.map(albumType=>{
+                            return (
+                                <option value={albumType.id} key={albumType.id}>{albumType.name}</option>
+                                )
+                        })
+                    }
+                </select>
+                <select name="categories">
+                    {
+                        this.state.categories.map(category=>{
+                            return (
+                                <option key={category.id}>{category.name}</option>
+                                )
+                        })
+                    }
+                </select>
+                </div>
+            );
+        }
+    }
+
+      ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
