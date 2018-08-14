@@ -114,9 +114,26 @@
                             
                         ]
                     }
-                ],
-                inputValue:''
+                ]
             }
+        }
+
+        /**
+         * （目前没有用到）
+         * 组件生命周期
+         * will 函数在进入状态之前调用，did 函数在进入状态之后调用
+         * 可以用来 做数据初始化和注销
+         **/
+        componentDidMount() {
+            fetch("https://api.github.com/users/octocat/gists")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    console.log(result)
+                },
+                (error) => {
+                }
+            )
         }
 
         albumTypesChange = (e)=>{
